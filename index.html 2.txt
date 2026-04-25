@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday!</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0533, #2d0a5e, #0d1b6e);
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 50px 40px;
+  max-width: 500px;
+  width: 90%;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+h1 {
+  font-size: 3rem;
+  color: #ffd93d;
+  margin: 20px 0 10px;
+}
+.cake { font-size: 80px; }
+p {
+  color: white;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  line-height: 1.7;
+}
+input {
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  width: 80%;
+  margin: 10px 0;
+  text-align: center;
+}
+button {
+  background: linear-gradient(90deg, #ff6b9d, #ffd93d);
+  color: #1a0533;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+#wish {
+  color: #ffd93d;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  min-height: 40px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="cake">🎂</div>
+  <h1>Happy Birthday!</h1>
+  <p>اكتب اسم شخص تحبه 👇</p>
+  <input type="text" id="nameInput" placeholder="اكتب الاسم هنا..." />
+  <br>
+  <button onclick="wish()">🎉 احتفل!</button>
+  <div id="wish"></div>
+</div>
+<script>
+function wish() {
+  const name = document.getElementById('nameInput').value;
+  const div = document.getElementById('wish');
+  if (name) {
+    div.innerHTML = '🎊 عيد ميلاد سعيد يا <strong>' + name + '</strong>! 🎊<br>يسعد ربي بيك!';
+  } else {
+    div.innerHTML = 'اكتب اسم أولاً! 😄';
+  }
+}
+</script>
+</body>
+</html>
