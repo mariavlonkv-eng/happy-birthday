@@ -2,86 +2,238 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday!</title>
+<title>Happy Birthday Jouria!</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1a0533, #2d0a5e, #0d1b6e);
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 28px;
-  padding: 50px 40px;
-  max-width: 500px;
-  width: 90%;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-h1 {
-  font-size: 3rem;
-  color: #ffd93d;
-  margin: 20px 0 10px;
-}
-.cake { font-size: 80px; }
-p {
-  color: white;
-  font-size: 1.2rem;
-  margin: 20px 0;
-  line-height: 1.7;
-}
-input {
-  padding: 12px 20px;
-  border-radius: 50px;
-  border: none;
-  font-size: 1rem;
-  width: 80%;
-  margin: 10px 0;
-  text-align: center;
-}
-button {
-  background: linear-gradient(90deg, #ff6b9d, #ffd93d);
-  color: #1a0533;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 14px 36px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-#wish {
-  color: #ffd93d;
-  font-size: 1.3rem;
-  margin-top: 20px;
-  min-height: 40px;
-}
+body { background: #0a0010; font-family: 'Outfit', sans-serif; overflow: hidden; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; }
+#matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+.star { position: fixed; background: white; border-radius: 50%; animation: twinkle linear infinite; z-index: 1; pointer-events: none; }
+@keyframes twinkle { 0%,100%{opacity:0.2;} 50%{opacity:1;} }
+.screen { position: fixed; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; z-index:10; opacity:0; pointer-events:none; transition:opacity 0.8s ease; }
+.screen.active { opacity:1; pointer-events:all; }
+.counter-number { font-family:'Dancing Script',cursive; font-size:25vw; color:#ff69b4; text-shadow:0 0 40px #ff69b4,0 0 80px #ff1493; animation:pulse 0.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
+.hb-line { display:flex; gap:6px; }
+.hb-letter { font-family:'Dancing Script',cursive; font-size:10vw; font-weight:700; opacity:0; transform:translateY(60px); animation:letterRise 0.4s ease forwards; }
+@keyframes letterRise { to{opacity:1;transform:translateY(0);} }
+.hb-letter:nth-child(1){color:#ff6b6b;animation-delay:0.1s;}
+.hb-letter:nth-child(2){color:#ff9f43;animation-delay:0.2s;}
+.hb-letter:nth-child(3){color:#ffd93d;animation-delay:0.3s;}
+.hb-letter:nth-child(4){color:#6bcb77;animation-delay:0.4s;}
+.hb-letter:nth-child(5){color:#4d96ff;animation-delay:0.5s;}
+.hb-letter2:nth-child(1){color:#ff69b4;animation-delay:0.6s;}
+.hb-letter2:nth-child(2){color:#c77dff;animation-delay:0.7s;}
+.hb-letter2:nth-child(3){color:#ff6b6b;animation-delay:0.8s;}
+.hb-letter2:nth-child(4){color:#ff9f43;animation-delay:0.9s;}
+.hb-letter2:nth-child(5){color:#ffd93d;animation-delay:1.0s;}
+.hb-letter2:nth-child(6){color:#6bcb77;animation-delay:1.1s;}
+.hb-letter2:nth-child(7){color:#4d96ff;animation-delay:1.2s;}
+.hb-letter2:nth-child(8){color:#ff69b4;animation-delay:1.3s;}
+.cat-container { display:flex; flex-direction:column; align-items:center; animation:floatCat 3s ease-in-out infinite; }
+@keyframes floatCat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+.cat-emoji { font-size:100px; }
+.cat-text { font-family:'Dancing Script',cursive; font-size:3rem; color:#ff69b4; text-shadow:0 0 20px #ff69b4; margin-top:10px; }
+.bday-card { background:white; border-radius:20px; padding:30px 40px; text-align:center; max-width:340px; width:90%; box-shadow:0 0 60px rgba(255,105,180,0.5); animation:cardAppear 0.8s ease forwards; position:relative; }
+@keyframes cardAppear { from{transform:scale(0.5) rotate(-10deg);opacity:0;} to{transform:scale(1) rotate(0deg);opacity:1;} }
+.card-title { font-family:'Dancing Script',cursive; font-size:1.6rem; color:#ff69b4; }
+.card-name { font-family:'Dancing Script',cursive; font-size:2.5rem; color:#ff1493; font-weight:700; }
+.card-hearts { font-size:1.5rem; margin:10px 0; animation:heartbeat 1s ease-in-out infinite; }
+@keyframes heartbeat { 0%,100%{transform:scale(1);} 50%{transform:scale(1.2);} }
+.card-msg { font-size:1rem; color:#888; line-height:1.7; margin-top:8px; }
+.floating-heart { position:absolute; font-size:1.2rem; animation:floatHeart 3s ease-in-out infinite; }
+@keyframes floatHeart { 0%,100%{transform:translateY(0) rotate(-10deg);} 50%{transform:translateY(-15px) rotate(10deg);} }
+.heart-shape { position:relative; width:308px; height:275px; }
+.heart-dot { position:absolute; width:40px; height:40px; border-radius:8px; background:linear-gradient(135deg,#ff69b4,#ff1493); border:2px solid white; display:flex; align-items:center; justify-content:center; font-size:1.2rem; box-shadow:0 0 15px rgba(255,105,180,0.6); animation:heartPop 0.4s ease forwards; opacity:0; transform:scale(0); }
+@keyframes heartPop { to{opacity:1;transform:scale(1);} }
+.heart-label { font-family:'Dancing Script',cursive; font-size:2rem; color:#ff69b4; margin-top:20px; text-shadow:0 0 20px #ff69b4; }
+.particle { position:fixed; pointer-events:none; z-index:5; animation:particleFly linear infinite; font-size:1.2rem; }
+@keyframes particleFly { 0%{transform:translateY(110vh) rotate(0deg);opacity:0;} 10%{opacity:1;} 90%{opacity:1;} 100%{transform:translateY(-100px) rotate(720deg);opacity:0;} }
+.btn { position:fixed; bottom:30px; z-index:100; border:none; border-radius:50px; padding:14px 30px; font-size:1rem; font-family:'Outfit',sans-serif; cursor:pointer; transition:transform 0.2s; display:none; }
+.btn:hover { transform:scale(1.05); }
+.btn.visible { display:block; }
+#nextBtn { right:30px; background:linear-gradient(135deg,#ff69b4,#ff1493); color:white; box-shadow:0 4px 20px rgba(255,20,147,0.5); }
+#restartBtn { left:30px; background:transparent; color:#ff69b4; border:2px solid #ff69b4 !important; }
+/* QR screen */
+.qr-container { display:flex; flex-direction:column; align-items:center; gap:16px; }
+.qr-title { font-family:'Dancing Script',cursive; font-size:2.5rem; color:#ff69b4; text-shadow:0 0 20px #ff69b4; text-align:center; }
+.qr-box { background:white; border-radius:20px; padding:20px; box-shadow:0 0 40px rgba(255,105,180,0.6); }
+.qr-subtitle { color:rgba(255,255,255,0.6); font-size:0.9rem; text-align:center; }
+.url-input { width:280px; padding:12px 18px; border-radius:50px; border:2px solid #ff69b4; background:rgba(255,255,255,0.1); color:white; font-size:0.9rem; font-family:'Outfit',sans-serif; outline:none; text-align:center; }
+.url-input::placeholder { color:rgba(255,255,255,0.4); }
+.gen-btn { background:linear-gradient(135deg,#ff69b4,#ff1493); color:white; border:none; border-radius:50px; padding:12px 28px; font-size:1rem; font-family:'Outfit',sans-serif; cursor:pointer; transition:transform 0.2s; }
+.gen-btn:hover { transform:scale(1.05); }
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="cake">🎂</div>
-  <h1>Happy Birthday!</h1>
-  <p>اكتب اسم شخص تحبه 👇</p>
-  <input type="text" id="nameInput" placeholder="اكتب الاسم هنا..." />
-  <br>
-  <button onclick="wish()">🎉 احتفل!</button>
-  <div id="wish"></div>
+
+<canvas id="matrix"></canvas>
+
+<div class="screen active" id="screen1">
+  <div class="counter-number" id="counterNum">3</div>
 </div>
+
+<div class="screen" id="screen2">
+  <div class="hb-line">
+    <span class="hb-letter">H</span><span class="hb-letter">A</span><span class="hb-letter">P</span><span class="hb-letter">P</span><span class="hb-letter">Y</span>
+  </div>
+  <div class="hb-line" style="margin-top:10px;">
+    <span class="hb-letter hb-letter2">B</span><span class="hb-letter hb-letter2">I</span><span class="hb-letter hb-letter2">R</span><span class="hb-letter hb-letter2">T</span><span class="hb-letter hb-letter2">H</span><span class="hb-letter hb-letter2">D</span><span class="hb-letter hb-letter2">A</span><span class="hb-letter hb-letter2">Y</span>
+  </div>
+</div>
+
+<div class="screen" id="screen3">
+  <div class="cat-container">
+    <div style="font-size:28px;margin-bottom:-10px;">🎂🕯️🎂🕯️🎂</div>
+    <div class="cat-emoji">🐱</div>
+    <div style="font-size:22px;margin-top:-8px;">🎸</div>
+    <div class="cat-text">Jouria! 🎉</div>
+  </div>
+</div>
+
+<div class="screen" id="screen4">
+  <div class="bday-card">
+    <div class="floating-heart" style="top:-10px;right:20px;">💕</div>
+    <div class="floating-heart" style="top:10px;left:15px;animation-delay:1s;">🩷</div>
+    <div class="card-title">Happy Birthday</div>
+    <div class="card-name">Jouria 🧡</div>
+    <div class="card-hearts">💗 💖 💗</div>
+    <div class="card-msg">
+      Wishing you the most beautiful day! 🎂<br>
+      May all your dreams come true ✨<br>
+      You are so special 🌸
+    </div>
+  </div>
+</div>
+
+<div class="screen" id="screen5">
+  <div class="heart-shape" id="heartShape"></div>
+  <div class="heart-label">💗 Jouria 💗</div>
+</div>
+
+<div class="screen" id="screen6">
+  <div class="qr-container">
+    <div class="qr-title">Scan Me! 💗</div>
+    <div class="qr-box" id="qrcode">
+      <div style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;color:#ccc;font-size:0.9rem;text-align:center;">Paste your link below and click Generate</div>
+    </div>
+    <div class="qr-subtitle">Scan to open Jouria's birthday page 🎉</div>
+    <input class="url-input" id="urlInput" type="text" placeholder="Paste your GitHub link here..." />
+    <button class="gen-btn" onclick="generateQR()">Generate QR 🔲</button>
+  </div>
+</div>
+
+<button class="btn" id="nextBtn" onclick="nextScreen()">Next ▶</button>
+<button class="btn" id="restartBtn" onclick="restart()">🔄 Restart</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-function wish() {
-  const name = document.getElementById('nameInput').value;
-  const div = document.getElementById('wish');
-  if (name) {
-    div.innerHTML = '🎊 عيد ميلاد سعيد يا <strong>' + name + '</strong>! 🎊<br>يسعد ربي بيك!';
-  } else {
-    div.innerHTML = 'اكتب اسم أولاً! 😄';
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 3 + 1;
+  s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*3+2}s;animation-delay:${Math.random()*3}s;`;
+  document.body.appendChild(s);
+}
+
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const chars = 'アイウエオJOURIAHAPPYBIRTHDAY♡❤💗';
+const fontSize = 14;
+const cols = Math.floor(canvas.width / fontSize);
+const drops = Array(cols).fill(1);
+setInterval(() => {
+  ctx.fillStyle = 'rgba(10,0,16,0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  drops.forEach((y, i) => {
+    ctx.fillStyle = `hsl(${Math.random()*30+320},100%,${Math.random()*30+50}%)`;
+    ctx.font = fontSize + 'px monospace';
+    ctx.fillText(chars[Math.floor(Math.random()*chars.length)], i*fontSize, y*fontSize);
+    if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  });
+}, 50);
+
+['💗','✨','🌸','💕','⭐','🎀'].forEach(e => {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.textContent = e;
+  p.style.cssText = `left:${Math.random()*100}%;animation-duration:${Math.random()*6+4}s;animation-delay:${Math.random()*5}s;`;
+  document.body.appendChild(p);
+});
+
+let currentScreen = 1;
+
+function showScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + n).classList.add('active');
+  currentScreen = n;
+  document.getElementById('nextBtn').classList.remove('visible');
+  document.getElementById('restartBtn').classList.remove('visible');
+  if (n === 5) buildHeart();
+  if (n === 6) setTimeout(() => document.getElementById('restartBtn').classList.add('visible'), 500);
+}
+
+function nextScreen() {
+  if (currentScreen < 6) {
+    showScreen(currentScreen + 1);
+    setTimeout(() => {
+      if (currentScreen < 6) document.getElementById('nextBtn').classList.add('visible');
+    }, 1500);
   }
 }
+
+function restart() { showScreen(1); startCounter(); }
+
+function startCounter() {
+  let count = 3;
+  const el = document.getElementById('counterNum');
+  el.textContent = count;
+  const iv = setInterval(() => {
+    count--;
+    if (count > 0) { el.textContent = count; }
+    else {
+      clearInterval(iv);
+      showScreen(2);
+      setTimeout(() => document.getElementById('nextBtn').classList.add('visible'), 2000);
+    }
+  }, 1000);
+}
+
+function buildHeart() {
+  const pos = [[1,0],[2,0],[4,0],[5,0],[0,1],[1,1],[2,1],[3,1],[4,1],[5,1],[6,1],[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[1,3],[2,3],[3,3],[4,3],[5,3],[2,4],[3,4],[4,4],[3,5]];
+  const c = document.getElementById('heartShape');
+  c.innerHTML = '';
+  const em = ['💗','🌸','✨','💕','⭐','🎀','💖'];
+  pos.forEach(([col, row], idx) => {
+    const d = document.createElement('div');
+    d.className = 'heart-dot';
+    d.style.left = (col * 44) + 'px';
+    d.style.top = (row * 44) + 'px';
+    d.style.animationDelay = (idx * 0.06) + 's';
+    d.textContent = em[idx % em.length];
+    c.appendChild(d);
+  });
+}
+
+function generateQR() {
+  const url = document.getElementById('urlInput').value.trim();
+  if (!url) { alert('Please paste your GitHub link first!'); return; }
+  const qrDiv = document.getElementById('qrcode');
+  qrDiv.innerHTML = '';
+  new QRCode(qrDiv, {
+    text: url,
+    width: 200,
+    height: 200,
+    colorDark: '#ff1493',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+startCounter();
 </script>
 </body>
 </html>
